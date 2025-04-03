@@ -1,15 +1,25 @@
+import pandas as pd
 import matplotlib.pyplot as plt
-# данные для диаграммы
-categories = ['понедельник', 'вторник', 'среда', 'четверг', 'пятница']
-values = [7, 9, 11, 4, 8]
 
-# создание столбчатой диаграммы
-plt.bar(categories, values)
+# Шаг 1: Считываем данные из Excel
+file_path = 'data.xlsx'  # Путь к файлу Excel
+df = pd.read_excel(file_path)
 
-# добавление заголовка и подписей к осям
-plt.title('температура на недели')
-plt.xlabel('дни недели')
-plt.ylabel('t воздуха')
+# Проверяем структуру данных
+print(df.head())  # Вывод первых строк для проверки
 
-# отображение диаграммы
+# Шаг 2: Построение графика
+plt.figure(figsize=(25, 25))  # Размер окна графика
+
+# Используем данные из DataFrame
+plt.plot(df['x'], df['y'], marker='o', label='курс доллара')
+
+# Настройка графика
+plt.title('курс доллара')
+plt.xlabel('год')
+plt.ylabel('цена')
+plt.legend()
+plt.grid(True)  # Включить сетку
+
+# Шаг 3: Отображаем график
 plt.show()
